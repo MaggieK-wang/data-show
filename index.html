@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据平台</title>
+  <script src="./js/flexible.js"></script>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/box-left.css">
+  <link rel="stylesheet" href="./css/box-center.css">
+  <link rel="stylesheet" href="./css/box-right.css">
+  <style>
+    /* 边提升框 */
+    .g6-tooltip__box {
+      background-image: url('./img/edge-data-bg.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 15.7rem;
+      height: 2.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      font-size: 1.8rem;
+      color: #ffffff;
+    }
+    .g6-tooltip__box span:first-child {
+      color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="bg">
+      <div class="bg-top">数 据 使 能 大 界 面</div>
+    </div>
+    <div class="box">
+      <box-left></box-left>
+      <box-center></box-center>
+      <box-right></box-right>
+    </div>
+  </div>
+</body>
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script> -->
+<script src="./js/vue.min.js"></script>
+<!-- <script src="https://lib.baomitu.com/echarts/4.8.0/echarts.min.js"></script> -->
+<script src="./js/echarts.min.js"></script>
+<script src="./js/echarts-liquidfill.min.js"></script>
+<script src="./js/g6.js"></script>
+<script src="./js/custom-edge/dashed-line.js"></script>
+<script src="./js/custom-node/index.js"></script>
+<script src="./js/utils.js"></script>
+<!-- 左侧 -->
+<script type="text/x-template" id="box-left-template">
+  <div class="box-left"> 
+   <div class="box-left-one"> 
+    <div class="box-left-one__top"> 
+     <div class="head">
+      数据核心资产
+     </div> 
+     <div class="box-left-one__content"> 
+      <div class="content-box"> 
+       <div class="content-box_left box1"> 
+        <div class="number"> 
+         <span>2222</span> 
+        </div> 
+        <div class="describe"> 
+         <span>累计记录条数(条)</span> 
+        </div> 
+       </div> 
+       <div class="content-box__right box1"> 
+        <div class="number"> 
+         <span>3.15</span> 
+        </div> 
+        <div class="describe"> 
+         <span>累计数据量(GB)</span> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="table-box"> 
+      <table width="100%" rules="rowcols"> 
+       <tbody>
+        <tr class="table-head-style"> 
+         <th>排名</th> 
+         <th>层次名称</th> 
+         <th>记录数</th> 
+         <th>数据量</th> 
+        </tr> 
+        <tr v-for="item in tableData" class="table-cell-style" :key="item.id"> 
+         <td><div class="icon_"></div><span>{{item.rank}}</span></td> 
+         <td><span>{{item.name}}</span></td> 
+         <td><span>{{item.score|changeNum}}</span></td> 
+         <td><span>{{item.dataNum|changeNum}}</span></td> 
+        </tr> 
+       </tbody>
+      </table> 
+     </div> 
+    </div> 
+    <!-- content-two --> 
+    <div class="box-left-two"> 
+     <div class="box-left-two__top"> 
+      <div class="head">
+       数据核心算力
+      </div> 
+      <div class="box-left-two__content"> 
+       <div class="content-box"> 
+        <div class="content-box-bg" v-for="item in data"> 
+         <div class="form"> 
+          <div class="form_num"> 
+           <span>{{item.value|changeNum}}</span> 
+           <span>{{item.unit}}</span> 
+          </div> 
+          <div class="form_des"> 
+           <span>{{item.label}}</span> 
+          </div> 
+         </div> 
+        </div> 
+        <!--  --> 
+        <div class="box-load"> 
+         <div class="info font-size">
+          整体负载
+         </div> 
+         <div class="content-load"> 
+          <div class="content-load__image"> 
+            <div class="img" ref="chart-pie"></div> 
+          </div> 
+          <div class="content-load__des"> 
+           <div class="info-box" v-for="item in dataList" :key="item.label"> 
+            <div class="info-box-left"> 
+             <div class="rect_"></div> 
+             <div class="des font-size-two"> 
+              <span>{{item.label}}</span>
+             </div> 
+            </div> 
+            <div class="info-box-right"> 
+             <div class="rate-chart">
+              <div class="rate-chart_box" v-for="i in 5"></div>
+              <div class="rate-chart_num" ><span>100%</span></div>
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div>
+  </div>
+</script>
+<script src="./js/box-left/index.js"></script>
+
+<!-- 中间 -->
+<script type="text/x-template" id="box-center-template">
+  <div class="box-center" ref="graph-box">
+    <div ref="graph-canvas"></div>
+  </div>
+</script>
+<script src="./js/box-center/graph-data.js"></script>
+<script src="./js/box-center/index.js"></script>
+
+<!-- 右侧 -->
+<script type="text/x-template" id="box-right-template">
+  <div class="box-right">
+      <div class="container" v-for="(item,index) in dataList" :key="item.id">
+        <div class="content">
+          <div class="head">{{item.name}}</div>
+          <div class="content-box">
+          <div class="main">
+            <!-- 1 -->
+            <div class="main-one main-box">
+              <div class="main-box__num">{{item.topicsNum|changeNum}}</div>
+              <div class="main-box__name">
+              <div class="rect"><span>主题总数/个</span></div>
+               
+              </div>
+            </div>
+            <!-- 2 -->
+            <div class="main-two main-box">
+              <div class="main-box__num">{{item.modelNum|changeNum}}</div>
+              <div class="main-box__name">
+                <div class="rect"> <span>模型总数/个</span></div>
+                
+              </div>
+            </div>
+            <!-- 3 -->
+            <div class="main-three main-box">
+              <div class="main-box__num">{{item.fieldNum|changeNum}}</div>
+              <div class="main-box__name">
+                <div class="rect"><span>字段总数/个</span></div>
+               
+              </div>
+            </div>
+          </div>
+          <!--  -->
+          <div class="daily-task">
+            <div class="daily-task-num">
+          <span>当前完成任务总数</span>
+            </div>
+            <div class="daily-task-rate">
+              <div class="rate-chart" 
+          >
+          <!-- 比例 -->
+          <div class="rate-chart_box" v-for="i in 14"></div>
+          <div class="rate-chart_num"><span>100%</span></div>
+        </div>
+            </div>
+            <div class="task-num">
+              <div class="task-num__complete"> 
+                <span>当日完成任务数:</span>
+                <span class="num">{{item.completeTaskNum}}</span>
+              </div>
+              <div class="task-num__total"> 
+                <span>总任务数:</span>
+                <span class="num">{{item.totalTaskNum}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+<script src="./js/box-right/index.js"></script>
+<script>
+  new Vue({
+    el: '#app'
+  });
+</script>
+
+</html>

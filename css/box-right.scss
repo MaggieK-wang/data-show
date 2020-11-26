@@ -1,0 +1,179 @@
+.box-right{
+  box-sizing: border-box;
+  z-index: 99;
+  margin-top: 11.8rem;
+  margin-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  .container {
+    background: url('/img/right-box.png') no-repeat;
+    background-size: 100%;
+    &-three{
+      height: 35.8rem;
+    }
+    .content {
+      height: 30.2rem;
+      width: 35.8rem;
+      padding-left: 1.8rem;
+      padding-top: 1.4rem;
+      padding-right: 1.8rem;
+      position: relative;
+      &-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      .main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 3.1rem;
+      &-box{
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+         &__num{
+          font-size: 2.5rem;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          background: linear-gradient(4deg, #FFC600 0%, #FF6C00 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        
+        }
+        &__name{
+          position: relative;
+          font-size: 0.2rem;
+          font-family: Microsoft YaHei;
+          color: #9EDAFF;
+          margin-top: 1rem;
+          display: flex;
+          justify-content: center;
+          align-self: center;
+          box-sizing: border-box;
+        //  width: 6px;
+        //   height: 6px;
+          // border: 1px solid #FFFFFF;
+          // opacity: 0.73;
+         
+          .rect{
+            // position: absolute;
+            // top: 0;
+            // left: 0;
+            // width: 9.2rem;
+            // height: 2.1rem;
+            padding: 0.7rem;
+            margin: 0.2rem;
+            background:
+            linear-gradient(to bottom,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) left top no-repeat,
+            linear-gradient(to right,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) left top no-repeat,
+            linear-gradient(to bottom,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) right top no-repeat,
+            linear-gradient(to left,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) right top no-repeat,
+            linear-gradient(to top,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) left bottom no-repeat,
+            linear-gradient(to right,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) left bottom no-repeat,
+            linear-gradient(to top,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) right bottom no-repeat,
+            linear-gradient(to left,#FFFFFF 0px,#FFFFFF 1px,transparent 1px,transparent 100%) right bottom no-repeat;
+              background-size: 0.6rem 0.6rem; 
+              span{
+                padding: 0.1rem;
+              }
+          }
+        }
+      }
+     }
+     .daily-task{
+      margin-top: 3.1rem;
+      font-size: 1.2rem;
+      font-family: Microsoft YaHei;
+      font-weight: 400;
+      color: #9EDAFF;
+      line-height: 3.3rem;
+      &-num{       
+          font-size: 1.4rem;
+          color: #9EDAFF;
+          line-height: 3.3rem;
+      }
+      .daily-task-rate{
+        width: 35.6rem;
+        height: 2rem;
+        border:  1px solid rgba($color: #ffffff, $alpha: .2);
+        margin-right: 1rem;
+        display: inline-grid;
+        .rate-chart{
+          z-index: 200;
+          display: flex;
+          justify-content: flex-start;
+          align-self: center;
+          &_box{
+            width: 1rem;
+            height: 1rem;
+            background: linear-gradient(to right,#90c1f8,#7a8df8);
+            margin-left: 1rem; 
+            &:nth-child(2){
+              background: linear-gradient(to right,#7a8df8,#4a65ff);
+            }
+            &:nth-child(3){
+              background: linear-gradient(to right,#4a65ff,#425ef8);
+            }
+            &:nth-child(4){
+              background: linear-gradient(to right,#425ef8,#3c58fa);
+            }
+            &:nth-child(5){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(6){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(7){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(8){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(9){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(10){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(11){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(12){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(13){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            &:nth-child(14){
+              background: linear-gradient(to right,#3c58fa,#3754f8);
+            }
+            
+         }
+         &_num{
+           font-size: 1.8rem;
+           line-height: 1rem;
+           margin-left: 1rem;
+         }
+        }
+      }
+      .task-num{
+        display: flex;
+        justify-content: space-between;
+          .num{
+          font-size: 1.8rem;
+          font-family: Microsoft YaHei;
+          font-weight: 400;
+          color: #FFFFFF;
+          line-height: 6rem;
+          background: linear-gradient(4deg, #FFC600 0%, #FF6C00 100%);
+          // background: #FF6C00;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+           }
+       }
+      }
+     }
+    }
+  }
+}
